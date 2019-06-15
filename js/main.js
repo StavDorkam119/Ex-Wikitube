@@ -7,6 +7,7 @@ document.body.onload = onInit;
 
 function onInit() {
     document.querySelector('.search-btn').onclick = onSearchTermSub;
+    document.querySelector('.screen').onclick = onCloseModal;
 }
 
 function onSearchTermSub() {
@@ -66,10 +67,16 @@ function handleYoutubeSearchItems (searchItems) {
 }
 
 function onOpenModal (videoId) {
+    document.querySelector('.screen').hidden = false;
     let elIframeContainer = document.querySelector('.video-wiki-modal div');
     let strHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" 
     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; 
     picture-in-picture" allowfullscreen></iframe>`
     elIframeContainer.innerHTML = strHTML;
     document.querySelector('.video-wiki-modal').classList.add('shown');
+}
+
+function onCloseModal () {
+    document.querySelector('.screen').hidden = true;
+    document.querySelector('.video-wiki-modal').classList.remove('shown');
 }
